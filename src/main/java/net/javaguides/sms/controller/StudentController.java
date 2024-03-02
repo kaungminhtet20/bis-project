@@ -27,6 +27,14 @@ public class StudentController {
 		return "students";
 	}
 	
+	//sample for generate salary
+	/*@GetMapping("/students/{id}/salary")
+	public String generateStudentSalary(Long id) {
+		studentService.getStudentById(id);
+		return "students";
+	}*/
+
+	
 	@GetMapping("/students/new")
 	public String createStudentForm(Model model) {
 		
@@ -49,6 +57,12 @@ public class StudentController {
 		return "edit_student";
 	}
 
+	@GetMapping("/students/{id}/generateSalary")
+    public String generateSalary(@PathVariable Long id, Model model) {
+		model.addAttribute("student", studentService.getStudentById(id));
+		return "generate_salary";
+	}
+
 	@PostMapping("/students/{id}")
 	public String updateStudent(@PathVariable Long id,
 			@ModelAttribute("student") Student student,
@@ -60,6 +74,9 @@ public class StudentController {
 		existingStudent.setFirstName(student.getFirstName());
 		existingStudent.setLastName(student.getLastName());
 		existingStudent.setEmail(student.getEmail());
+		existingStudent.setKPI(student.getKPI());
+		existingStudent.setBasedSalary(student.getBasedSalary());
+		
 		
 		// save updated student object
 		studentService.updateStudent(existingStudent);

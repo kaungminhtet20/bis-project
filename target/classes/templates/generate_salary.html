@@ -8,11 +8,18 @@
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
     <script  th:inline="javascript">
+	    function calKPI(){
+		const salary = document.getElementById("salary");
+		const kpiValue = document.getElementById("kpi");
+		console.log(salary,kpiValue);
+			}
         function greetWorld(kpi) {
            console.log('hey',kpi)
             
         }
-    
+	function onBack(){
+		window.location = "http://localhost:8080/students";
+		    }
         function salute(name) {
             alert("hello: " + name)
         }
@@ -92,37 +99,57 @@
 							/>
 						</div>
 						
-						<div class ="form-group">
-							<label> KPI(%)</label>
+						<div class ="d-flex flex-row">
+							<p> KPI(%)</p>
 							<input
-							type = "number"
+									id="kpi"
+							type = "text"
 							name = "KPI"
 							th:field = "*{KPI}"
 							class = "form-control"
 							placeholder="Enter KPI" 
 							required
+							disabled
+                            style="background-color: white;border: 0; width: 50%; margin-top: -15px;"
 							/>
 						</div>
 						
-						<div class ="form-group">
-							<label> Based Salary</label>
+						<div class ="d-flex flex-row">
+							<p> Based Salary</p>
 							<input
-							type = "number"
+							type = "text"
 							name = "basedSalary"
 							th:field = "*{basedSalary}"
 							class = "form-control"
 							placeholder="Enter Based Salary" 
 							required
+							disabled
+                            style="background-color: white;border: 0; width: 50%; margin-top: -15px;"
 							/>
 						</div>
-					
+							<div class ="d-flex flex-row">
+							<p>Total Salary</p>
+							<input
+							type = "text"
+							name = "basedSalary"
+							class = "form-control"
+							required
+							disabled
+                            style="background-color: white;border: 0; width: 50%; margin-top: -15px;"
+							/>
+						</div>				
 						<div class = "box-footer">
-							<button type="submit" class = "btn btn-primary">
-								Submit
+							<button onclick="calKPI()" class="btn btn-secondary">
+								Cal
+							</button>
+							<button class = "btn btn-primary">
+							<a href="http://localhost:8080/students" style="color:white">
+							Back	
+							</a>
 							</button>
 						</div>
 					</form>
-				
+
 				</div>
 			</div>
 		</div>
